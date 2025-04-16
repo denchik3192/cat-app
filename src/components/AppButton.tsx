@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import s from "./appButton.module.scss";
 import { fetchCatImage } from "../API/getCat";
+
 type Props = {
   children: ReactNode;
   setCatImage: React.Dispatch<React.SetStateAction<string>>;

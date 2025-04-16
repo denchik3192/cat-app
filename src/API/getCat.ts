@@ -9,6 +9,6 @@ export const fetchCatImage = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(`Failed to fetch cat image:, ${error.message}`);
+    console.error(`Failed to fetch cat image: ${error}`);
   }
 };

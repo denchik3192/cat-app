@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import s from "./App.module.scss";
 import AppButton from "./components/AppButton";
 import Card from "./components/Card";
 import { fetchCatImage } from "./API/getCat";
@@ -40,13 +40,7 @@ function App() {
   return (
     <>
       <Card>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "start",
-          }}
-        >
+        <div className={s.headerBlock}>
           <label>
             <input
               type="checkbox"
@@ -56,7 +50,7 @@ function App() {
             />
             Enabled
           </label>
-          <label>
+          <label style={{ display: "inline-block", marginTop: "20px" }}>
             <input
               type="checkbox"
               name="auto-refresh"
@@ -82,24 +76,12 @@ function App() {
           }}
         >
           {isLoading ? (
-            <img
-              src="/pows.gif"
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
+            <img className={s.image} src="/pows.gif" alt="" />
           ) : (
             <img
+              className={s.image}
               src={!catImage ? "/pows.gif" : catImage}
               alt="cat-img"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
             />
           )}
         </div>
