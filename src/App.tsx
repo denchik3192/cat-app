@@ -10,25 +10,24 @@ function App() {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isAutoRefresh, setIsAutoRefresh] = useState(false);
 
+  const getCat = async () => {
+    try {
+      setIsLoading(true);
+      const res = await fetchCatImage();
+      setCatImage(res[0].url);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     let interval: number;
 
     if (isAutoRefresh) {
       interval = setInterval(() => {
-        const fetchAndSetImage = async () => {
-          setIsLoading(true);
-          try {
-            const image = await fetchCatImage();
-
-            setCatImage(image[0].url);
-          } catch (error) {
-            console.error("Error fetching cat image:", error);
-          } finally {
-            setIsLoading(false);
-          }
-        };
-
-        fetchAndSetImage();
+        getCat();
       }, 5000);
     }
 
@@ -65,6 +64,7 @@ function App() {
           setCatImage={setCatImage}
           setIsLoading={setIsLoading}
           isEnabled={isEnabled}
+          getCat={getCat}
         >
           Get cat
         </AppButton>
