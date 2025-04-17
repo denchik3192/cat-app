@@ -60,12 +60,7 @@ function App() {
           </label>
         </div>
 
-        <AppButton
-          setCatImage={setCatImage}
-          setIsLoading={setIsLoading}
-          isEnabled={isEnabled}
-          getCat={getCat}
-        >
+        <AppButton isEnabled={isEnabled} getCat={getCat}>
           Get cat
         </AppButton>
         <div
